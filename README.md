@@ -1,15 +1,35 @@
-# funchat
-A Bash script to send WhatsApp messages from one number to another
-# FunChat
+#!/bin/bash
 
-A Bash script to send WhatsApp messages from one number to another.
+# Print the WhatsApp logo
+echo -e "\e[32m" # Set text color to green
+echo "        .-\"\"\"\"\"\"-."
+echo "      .'          '."
+echo "     /   O      O   \\"
+echo "    :           \`    :"
+echo "    |                |"
+echo "    :    .------.    :"
+echo "     \\  '        '  /"
+echo "      '.          .'"
+echo "        '-......-'"
+echo -e "\e[0m" # Reset text color
 
-## Overview
+# Prompt for user input
+echo "Direct WhatsApp message sender"
+echo "Author: Arjun Singh"
+echo -e "\n"
 
-This script allows users to send WhatsApp messages directly from one phone number to another using the WhatsApp app or web interface. It prompts the user for the sender's and recipient's phone numbers, as well as the message to be sent.
+# Prompt for the sender's number (your friend's number)
+read -p "Enter Sender's Country Code (without +): " sender_country_code
+read -p "Enter Sender's WhatsApp number: " sender_num
 
-## Usage
+# Prompt for the recipient's number (the other friend's number)
+read -p "Enter Recipient's Country Code (without +): " recipient_country_code
+read -p "Enter Recipient's WhatsApp number: " recipient_num
 
-1. Make the script executable:
-   ```bash
-   chmod +x whatsapp_sender.sh
+# Prompt for the message or link to send
+read -p "Enter the message or link you want to send: " message
+
+# Open WhatsApp with the recipient's number and custom message
+echo "Opening WhatsApp on sender device..."
+sleep 2
+xdg-open "whatsapp://send?phone=$recipient_country_code$recipient_num&text=$message"
